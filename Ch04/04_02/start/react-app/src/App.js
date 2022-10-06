@@ -2,30 +2,62 @@ import './App.css';
 import { useState, useEffect } from 'react';
 
 
-function GitHubUser({name, location, avatar}){
+const query = `
+    query{
+      allLifts{
+        name
+        elevationGain
+        status
+      }
+    }
+`;
+
+const opts = {
+  method:"POST",
+  headers:{"Content-Type": "application/json"},
+  body: JSON.stringify({ query })
+};
+
+
+function Lift({name, elevationGain, status}){
 return (
   <div>
     <h1>{name}</h1>
-    <p>{location}</p>
-    <img src={avatar} height={150} alt={name}/>
+    <p>{elevationGain} {status}</p>
   </div>
-)
+  );
 }
 
 function App() {
   const [data, setData] = useState(null);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
-    fetch(`https://api.github.com/users/manuelesapia`
-    ).then((response) => response.json())
-    .then(setData);
-  }, [])
-  if(data) 
-  return <GitHubUser 
-  name ={data.name} 
-  location={data.location}
-  avatar={data.avatar_url}
-  />;
-  return <h1>Data</h1>;
+    setLoading(true);
+    fetch(`https://snowtooth.moonhighway.com/`,
+    opts    
+    )
+    .then((response) => response.json())
+    .then(setData)
+    .then(() => setLoading(false))
+    .catch(setError);
+  }, []);
+
+  if(loading) return <h1>loading..</h1>;
+  if(error) return <pre>{JSON.stringify(error)}</pre>;
+  if(!data) return null;
+console.log(data, "DATA!!");
+  return (
+    <div>
+      {data.data.allLifts.map((lift) => (
+        <Lift 
+        name={lift.name}
+        elevationGain={lift.elevationGain}
+        status={lift.status}
+        />
+      ))}
+    </div>
+  );
 }
 
 export default App;
