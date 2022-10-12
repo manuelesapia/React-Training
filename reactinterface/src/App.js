@@ -8,6 +8,16 @@ function App() {
 
 
   let [appointmentList, setAppointmentList] = useState([]);
+  let [query, setQuery] = useState("");
+  const filteredAppointments = appointmentList.filter(
+    item => {
+      return(
+        item.petName.toLowerCase().includes(query.toLowerCase()) ||
+        item.ownerName.toLowerCase().includes(query.toLowerCase()) ||
+        item.aptNotes.toLowerCase().includes(query.toLowerCase())
+      )
+    }
+  )
 
   const fetchData = useCallback(() => {
     fetch('./data.json')
@@ -29,10 +39,12 @@ function App() {
         <h1 className="text-5xl">
         <BiCalendar className="inline-block text-red-400 align-top" /> Your Appointments</h1>
         <AddAppointment />
-        <Search />
+        <Search query={query}
+          onQueryChange={myQuery => setQuery(myQuery)}
+        />
 
         <ul className="divide-y">
-          {appointmentList
+          {filteredAppointments
           .map(appointment => (
               <AppointmentInfo key={appointment.id} 
               appointment={appointment}
