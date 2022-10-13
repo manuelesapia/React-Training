@@ -9,3 +9,10 @@ const careerData = {
     title: 'developer',
     company: 'ABC Software',
 };
+
+const personWithCareerData = {
+    ...careerData,
+    ...person,
+};
+
+console.log(personWithCareerData);
