@@ -10,4 +10,10 @@ const pushNumber = [];
 for (let i = 0; i< numbers.length; i++){
     pushNumber.push(numbers[i]);
 }
-console.log(pushNumber);
+//console.log(pushNumber);
+
+
+const double = x => x * 2;
+
+const doubleNumbers = numbers.map(double);
+console.log(doubleNumbers);
