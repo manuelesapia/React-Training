@@ -1,6 +1,12 @@
-const map = (arr, func) => {
-    
+const map = (arr, func) =>{
+    var newArray = [];
+    for (let i = 0; i < arr.length; i++){
+        const result = func(arr[i]);
+        newArray.push(result);
+    }
+    return newArray
 }
+
 
 // testing if it works:
 
