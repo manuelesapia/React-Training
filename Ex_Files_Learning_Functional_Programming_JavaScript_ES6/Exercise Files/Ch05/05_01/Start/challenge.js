@@ -6,9 +6,22 @@ const electionVotes = [
     'Dane', 'Dane', 'Rick', 'Donna', 'Mortimer',
 ];
 
-const tallyVotes = votes => {
-    // Your code here
-};
+const tallyVotes = votes => 
+     votes.reduce((acc, name) => ({
+        ...acc,
+        [name]: acc[name] ? acc[name] + 1 : 1 , 
+    }) , {});
+
+
+
+    // var printNamesVote =[];
+    // for (let i = 0; i < electionVotes.length; i++ ){
+    //     printNamesVote.push(electionVotes[i]);
+    // }
+
+
+
+
 
 console.log(tallyVotes(electionVotes));
 
