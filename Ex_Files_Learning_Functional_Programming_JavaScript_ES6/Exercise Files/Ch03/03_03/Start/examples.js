@@ -1,14 +1,13 @@
 const numbers = [1, 2, 3, 4, 5];
+const tripleNumber =[];
+for (let i = 0; i < numbers.length; i++){
+    tripleNumber.push(numbers[i] * 3);
+};
 
 
-// for (let i = 0 < numbers.length i++){
-//     doubledNumbers.push(numbers[i] * 2);
-// }
+const pushNumber = [];
 
-const double = x => x * 2;
-
-const doubledNumbers = numbers.map(double);
-
-console.log(doubledNumbers);
-
-
+for (let i = 0; i< numbers.length; i++){
+    pushNumber.push(numbers[i]);
+}
+console.log(pushNumber);
