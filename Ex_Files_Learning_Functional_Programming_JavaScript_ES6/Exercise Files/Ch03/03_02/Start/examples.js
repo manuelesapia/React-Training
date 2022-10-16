@@ -15,4 +15,15 @@ const personWithCareerData = {
     ...person,
 };
 
-console.log(personWithCareerData);
+const updates = {
+    name: "Manuele sapia",
+};
+
+
+const updatedPerson = {
+...person,
+...updates,
+};
+
+
+console.log(updatedPerson);

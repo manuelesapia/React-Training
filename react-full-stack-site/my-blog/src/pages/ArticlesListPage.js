@@ -1,5 +1,6 @@
 import articles from "./article-content";
 import { Link } from "react-router-dom";
+
 const ArticlesListPage = () => {
     return(
         <>
