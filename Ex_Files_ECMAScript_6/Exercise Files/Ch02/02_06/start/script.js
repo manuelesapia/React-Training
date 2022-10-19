@@ -1,10 +1,15 @@
-let course = new Map();
+var displayPeople = ["jack", "leo", "matt", "fdfd"];
 
-course.set("react", { description: "ui" });
-course.set("jest", { description: "testing" });
 
-console.log(course);
 
-console.log(course.react);
+const showPeopleNumber = () => {
+    var updateNumber = [];
+    var text = " "
+    for(let i = 0; i < displayPeople.length; i++){
+      updateNumber.push(displayPeople[i]);
+    }
+    document.getElementsByClassName('app-list').innerHTML = text + updateNumber.length;
+  }
+  showPeopleNumber();
 
-console.log(course.get("react"));
+
