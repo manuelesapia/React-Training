@@ -20,7 +20,7 @@ const printPeople = () => {
   let idArray = []; 
   let li = "<li>";
   let liEnd = "</li>";
-  for (let i = 0; i < peopleList.length; i++){
+  for           (let i = 0; i < peopleList.length; i++){
     idArray.push(li + peopleList[i].toUpperCase() + liEnd)
   }
   document.getElementsByClassName("app-list")[0].innerHTML = idArray.join(' ');
